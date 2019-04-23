@@ -113,12 +113,4 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  menu: {
-    flex: 1,
-    height: '110%',
-    position: 'absolute',
-    resizeMode: 'contain',
-    marginLeft: '87%',
-    bottom: 3,
-  }
 });

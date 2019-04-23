@@ -110,23 +110,27 @@ var size = Object.size(stil);
        onBuffer={this.onBuffer}                // Callback when remote video is buffering
        onError={this.videoError}               // Callback when video cannot be loaded
        paused={this.state.isVideoPaused}    // This is ``falsy`` initially
-       repeat={true}                
+       loop={true}
+       autoplay={true}                
        onEnd={() => this.setState({isVideoPaused: true})}    
        style={styles.backgroundVideo} />
        <ImageBackground style={styles.image} source={{uri: `${movies.images.still[1].medium.film_image}`}}>
        <ImageBackground source={require('../screens/res/black.png')} style={styles.image2}>
        <Text style={styles.Title}>{movies.film_name}</Text>
        <Text style={styles.Text}>Advisory:  {movies.age_rating[0].age_advisory}</Text>
-       <Text style={styles.Text}>Rated:  {movies.age_rating[0].rating}                                             Release Date</Text>
-       <Text style={styles.Text}>Duration:  {movies.duration_mins}mins                                      {movies.release_dates[0].release_date}</Text>
+       <View style={{flexDirection: 'row'}}>
+       <Text style={styles.Text}>Rated:  {movies.age_rating[0].rating}</Text>
+       <Text style={styles.Text2}>Release Date: {movies.release_dates[0].release_date}</Text>
+       </View>
+       <Text style={styles.Text}>Duration:  {movies.duration_mins}mins</Text>
        <Text style={styles.Text}>Genre:  {movies.genres[0].genre_name}</Text>
        <Text style={styles.Title}>Cast</Text>
        <Text style={styles.Text}>• {movies.cast[0].cast_name}</Text>
        <Text style={styles.Text}>• {movies.cast[1].cast_name}</Text>
        <Text style={styles.Text}>• {movies.cast[2].cast_name}</Text>
-       <TouchableOpacity style={styles.Button} onPress={getCinemas}>
-       <Button title="Find Your Cinema" color='#5b000f'/>
-       </TouchableOpacity>
+       <TouchableOpacity style={styles.Button}>
+       <Button title="Find Your Cinema" color='#5b000f' style={styles.Button} onPress={getCinemas}/>
+       </TouchableOpacity >
        </ImageBackground>
       </ImageBackground>
         </View>
@@ -136,6 +140,7 @@ var size = Object.size(stil);
 /*Get nearby cinema -> get cinema details and film show times for the cinema */
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
@@ -143,10 +148,14 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   Button: {
-   // flex: 1,
-   // position: 'absolute',
-    //bottom: 0,
-   paddingTop: '8%',
+    // width: '100%', 
+    //   height: 50, 
+    //   backgroundColor: '#FF9800', 
+    //   justifyContent: 'center', 
+    //   alignItems: 'center',
+    //   position: 'absolute',
+    //   bottom: 0
+    marginTop: '7%'
     
   },
   Text: {
@@ -155,11 +164,26 @@ const styles = StyleSheet.create({
     paddingLeft: '2%',
     color: 'white',
   },
+  Text2: {
+    fontSize: 15,
+    paddingTop : '3%',
+    paddingLeft: '2%',
+    color: 'white',
+    textAlign: 'right',
+    flex:1,
+  },
   Title: {
     fontSize: 20,
     fontWeight: 'bold',
     paddingTop : '1%',
     textAlign: 'center',
+    color: 'white',
+  },
+  Title2: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingTop : '1%',
+    textAlign: 'left',
     color: 'white',
   },
   backgroundVideo: {

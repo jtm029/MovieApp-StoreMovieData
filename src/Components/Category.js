@@ -28,6 +28,7 @@ export default Category;
 
 const styles = StyleSheet.create({
     container: {
+      flex: 1,
       backgroundColor: '#5b000f',
       alignItems: 'center',
       justifyContent: 'center',
@@ -36,9 +37,10 @@ const styles = StyleSheet.create({
     },
     Button: {
       position: 'absolute',
-      marginTop: '143%',
+      bottom: 0,
+      //marginBottom: '143%',
       width: deviceWidth,
-      height: '20%', 
+      height: '9%', 
       borderWidth: 2,
       backgroundColor: '#5b000f', 
       justifyContent: 'center',
@@ -48,8 +50,9 @@ const styles = StyleSheet.create({
       fontSize: 20,
       paddingLeft: '0%',
       fontWeight: 'bold',
-      paddingTop : '15%',
+      paddingTop : '1%',
       textAlign: 'center',
+      //justifyContent: 'center',
       color: 'white',
     },
     image: {
