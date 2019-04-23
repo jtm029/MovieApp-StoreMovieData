@@ -29,8 +29,8 @@ var headers = {
     'device-datetime': `${FullDate}`
 }
 
-const getCinemas = () => {
-  Actions.nearby()
+const getCinemas = (props, prop) => {
+  Actions.nearby({Id: props, geo: prop})
 }
 
 export default class Home extends React.Component {
@@ -100,7 +100,7 @@ var size = Object.size(stil);
             </View>
         )
     } 
-
+var FilmId = `${movies.film_id}`
     return (
       <View style={styles.container}>
       <Video source={{uri: `${movies.trailers.high[0].film_trailer}`}}   // Can be a URL or a local file.
@@ -129,8 +129,8 @@ var size = Object.size(stil);
        <Text style={styles.Text}>• {movies.cast[1].cast_name}</Text>
        <Text style={styles.Text}>• {movies.cast[2].cast_name}</Text>
        <TouchableOpacity style={styles.Button}>
-       <Button title="Find Your Cinema" color='#5b000f' style={styles.Button} onPress={getCinemas}/>
-       </TouchableOpacity >
+       <Button title="Find Your Cinema" color='#5b000f' onPress={() => getCinemas(FilmId, this.props.Loc)}/>
+      </TouchableOpacity>
        </ImageBackground>
       </ImageBackground>
         </View>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: deviceWidth,
     height: '100%'
   },
   Button: {
@@ -153,9 +153,9 @@ const styles = StyleSheet.create({
     //   backgroundColor: '#FF9800', 
     //   justifyContent: 'center', 
     //   alignItems: 'center',
-    //   position: 'absolute',
+     //  position: 'absolute',
     //   bottom: 0
-    marginTop: '7%'
+    marginTop: '14%'
     
   },
   Text: {

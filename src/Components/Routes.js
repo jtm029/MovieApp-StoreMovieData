@@ -22,7 +22,7 @@ const HomeScreen = () => {
        <Image source={require('../screens/res/hmenu.png')}
               style={{ width: 65, height: 45 }} />
               </TouchableOpacity>
-              <Text style={{ marginLeft: 165, width: deviceWidth, fontSize: 20, marginTop: -35, color: 'white', fontWeight: 'bold'}}>Films Now Showing</Text></View>
+              <Text style={{ marginLeft: '50%' , width: deviceWidth, fontSize: 20, marginTop: -35, color: 'white', fontWeight: 'bold'}}>Films Now Showing</Text></View>
      </View>
    );
  };
@@ -31,7 +31,16 @@ const HomeScreen = () => {
    return (
       <View style={{width: deviceWidth }}>
      <View style={{ marginTop: 8 , flex: 1}}>
-      <Text style={{ marginLeft: 100, width: deviceWidth, fontSize: 20, marginTop: 12, color: 'white', fontWeight: 'bold'}}>Films Coming Soon</Text></View>
+      <Text style={{ textAlign: 'right', paddingRight: '20%', width: deviceWidth, fontSize: 20, marginTop: 12, color: 'white', fontWeight: 'bold'}}>Films Coming Soon</Text></View>
+     </View>
+   );
+ };
+
+ const CinemaScreen = () => {
+   return (
+      <View style={{width: deviceWidth }}>
+     <View style={{ marginTop: 8 , flex: 1}}>
+      <Text style={{ textAlign: 'right', paddingRight: '23%', width: deviceWidth, fontSize: 20, marginTop: 12, color: 'white', fontWeight: 'bold'}}>Cinemas Near You</Text></View>
      </View>
    );
  };
@@ -44,7 +53,7 @@ const Routes = () => (
          <Scene key = "details" component = {FilmDetails} title = "" />
          <Scene key = "options" component = {Options} title = "Options" />
          <Scene key = "soon" component = {FilmsComingSoon} renderTitle={() => { return <ComingScreen />; }}/>
-         <Scene key = "nearby" component = {Cinemas} title = "Nearby" />
+         <Scene key = "nearby" component = {Cinemas} renderTitle={() => { return <CinemaScreen />; }}/>
          <Scene key = "tickets" component = {Purchase} title = "Tickets" />
       </Scene>
    </Router>

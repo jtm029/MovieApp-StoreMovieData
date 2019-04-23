@@ -4,17 +4,44 @@ import { Actions } from 'react-native-router-flux';
 
 const deviceWidth = Dimensions.get('window').width;
 
-      const getDetails = (props) => {
-         Actions.details({Id: props})
+      const getDetails = (props, prop) => {
+         Actions.details({Id: props, Loc: prop})
       }
 
 class Category extends Component {
-    render(){      
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+    };
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+  }
+
+    render(){ 
+      const { latitude, longitude } = this.state;
+      var locate = latitude+';'+longitude;
+
         return(
             <View style={styles.container}>
                 <ImageBackground source={{uri: this.props.imageUri}} style={styles.image} >
             <ImageBackground source={require('../screens/res/shadow.png')} style={styles.image2}>
-            <TouchableOpacity style={styles.Button} onPress={() => getDetails(this.props.filmId)}>
+            <TouchableOpacity style={styles.Button} onPress={() => getDetails(this.props.filmId, locate)}>
             <Text style={styles.Text}>Film Trailer and Details</Text>
             </TouchableOpacity>
             </ImageBackground>
