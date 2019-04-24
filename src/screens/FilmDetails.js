@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ImageBackground, Button, Dimensions, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, ImageBackground, Button, Dimensions, Text, TextInput, View, ActivityIndicator } from 'react-native';
 import Video from 'react-native-video';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Actions } from 'react-native-router-flux';
@@ -40,6 +40,7 @@ export default class Home extends React.Component {
     this.state = {
         isLoading: true,  //Set initial states
         movies: [],
+        arrCast: [],
     }
 }
 
@@ -66,11 +67,11 @@ componentDidMount () {
 }
 
 render() {
-  const { movies } = this.state;
+  const { movies, arrCast } = this.state;
   var im = ((movies || {}).images || {});
-  const pos = 1;
-  var stil = im["still"];
-  //var link = null;
+  var cast = ((movies || {}).cast || {});
+  var still = im["still"];
+  var poster = im["poster"];
 
   Object.size = function(obj) {
     var size = 0, key;
@@ -81,18 +82,25 @@ render() {
 };
 
 // Get the size of an object
-var size = Object.size(stil);
+var sizeStill = Object.size(still);
+var sizeCast = Object.size(cast);
 
-  console.log(size);
-  if(size === 0){
-  //  link = im.poster = {};
+for(i = 0; i < sizeCast; i++){
+  arrCast[i] = movies.cast[i].cast_name;
+}
+
+const textInputComponents = arrCast.map((type)=> <TextInput placeholder={type} />);
+
+  console.log(arrCast);
+  if(sizeStill === 0){
+    var link = poster;
   }
   else
-   // link = stil = {};
+    var link = still;
 
     console.log(movies);
-//    console.log(still["medium"]);
-//console.log(movies);
+
+//console.log(link);
     if(this.state.isLoading){ //Load activity if api fails to return
         return (
             <View style={styles.container}>
@@ -114,23 +122,25 @@ var FilmId = `${movies.film_id}`
        autoplay={true}                
        onEnd={() => this.setState({isVideoPaused: true})}    
        style={styles.backgroundVideo} />
-       <ImageBackground style={styles.image} source={{uri: `${movies.images.still[1].medium.film_image}`}}>
+       <ImageBackground style={styles.image} source={{uri: `${link[1].medium.film_image}`}}>
        <ImageBackground source={require('../screens/res/black.png')} style={styles.image2}>
-       <Text style={styles.Title}>{movies.film_name}</Text>
-       <Text style={styles.Text}>Advisory:  {movies.age_rating[0].age_advisory}</Text>
-       <View style={{flexDirection: 'row'}}>
-       <Text style={styles.Text}>Rated:  {movies.age_rating[0].rating}</Text>
-       <Text style={styles.Text2}>Release Date: {movies.release_dates[0].release_date}</Text>
+       <View style={{paddingTop: '5%'}}>
+          <Text style={styles.Title}>{movies.film_name}</Text>
+          <Text style={styles.Text}>Advisory:  {movies.age_rating[0].age_advisory}</Text>
+          <View style={{flexDirection: 'row'}}>
+           <Text style={styles.Text}>Rated:  {movies.age_rating[0].rating}</Text>
+           <Text style={styles.Text2}>Release Date: {movies.release_dates[0].release_date}</Text>
+           </View>
+           <Text style={styles.Text}>Duration:  {movies.duration_mins}mins</Text>
+           <Text style={styles.Text}>Genre:  {movies.genres[0].genre_name}</Text>
+           <Text style={styles.Title}>Cast</Text>
+           <Text style={styles.Text}>• {textInputComponents}</Text>
+          <Text style={styles.Text}>• {movies.cast[1].cast_name}</Text>
+           <Text style={styles.Text}>• {movies.cast[2].cast_name}</Text>
        </View>
-       <Text style={styles.Text}>Duration:  {movies.duration_mins}mins</Text>
-       <Text style={styles.Text}>Genre:  {movies.genres[0].genre_name}</Text>
-       <Text style={styles.Title}>Cast</Text>
-       <Text style={styles.Text}>• {movies.cast[0].cast_name}</Text>
-       <Text style={styles.Text}>• {movies.cast[1].cast_name}</Text>
-       <Text style={styles.Text}>• {movies.cast[2].cast_name}</Text>
-       <TouchableOpacity style={styles.Button}>
-       <Button title="Find Your Cinema" color='#5b000f' onPress={() => getCinemas(FilmId, this.props.Loc)}/>
-      </TouchableOpacity>
+       <View style={styles.Button}>
+       <Button title="Find Your Cinema" style={styles.Button} color='#5b000f' onPress={() => getCinemas(FilmId, this.props.Loc)}/>
+      </View>
        </ImageBackground>
       </ImageBackground>
         </View>
@@ -145,18 +155,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: deviceWidth,
-    height: '100%'
+    minHeight: '100%',
   },
   Button: {
-    // width: '100%', 
-    //   height: 50, 
-    //   backgroundColor: '#FF9800', 
-    //   justifyContent: 'center', 
-    //   alignItems: 'center',
-     //  position: 'absolute',
-    //   bottom: 0
-    marginTop: '14%'
-    
+    position: 'absolute',
+    bottom: 12,
+    width: deviceWidth,      
   },
   Text: {
     fontSize: 15,
@@ -188,7 +192,7 @@ const styles = StyleSheet.create({
   },
   backgroundVideo: {
     position: 'absolute',
-    marginTop: '-100%',
+    marginTop: '-110%',
     top: 0,
     left: 0,
     bottom: 0,

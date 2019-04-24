@@ -34,8 +34,11 @@ class Category extends Component {
   }
 
     render(){ 
-      const { latitude, longitude } = this.state;
-      var locate = latitude+';'+longitude;
+    var { latitude, longitude } = this.state;
+    var lat = Math.round(latitude * 100) /100;
+    var lon = Math.round(longitude * 100) /100;
+      
+    var locate = lat+';'+lon;
 
         return(
             <View style={styles.container}>
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
     Button: {
       position: 'absolute',
       bottom: 0,
-      //marginBottom: '143%',
       width: deviceWidth,
       height: '9%', 
       borderWidth: 2,
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       paddingTop : '1%',
       textAlign: 'center',
-      //justifyContent: 'center',
       color: 'white',
     },
     image: {

@@ -33,7 +33,7 @@ class Options extends Component {
                 <Text style={styles.Text}>Films Coming Soon</Text>
                 </TouchableOpacity>
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={goNearby}>
                 <Text style={styles.Text}>  Cinemas Nearby</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>

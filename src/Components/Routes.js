@@ -47,7 +47,7 @@ const HomeScreen = () => {
 
 
 const Routes = () => (
-   <Router navigationBarStyle={{ backgroundColor: '#5b000f' , marginTop: '6%'}} navBarButtonColor='white'>
+   <Router navigationBarStyle={{ backgroundColor: '#5b000f' , marginTop: '5%'}} navBarButtonColor='white'>
       <Scene key = "root">
          <Scene key = "home" component = {Home} renderTitle={() => { return <HomeScreen />; }} initial = {true}/>
          <Scene key = "details" component = {FilmDetails} title = "" />

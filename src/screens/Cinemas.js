@@ -21,14 +21,14 @@ var min = new Date().getMinutes(); //Current Minutes
 var sec = new Date().getSeconds(); //Current Seconds
 var CurrentDate = year+'-'+month+'-'+date;
 var FullDate = year+'-'+month+'-'+date+'T'+hours+':'+min+':'+sec+'Z';
-var Headers = {
+var headers = {
+  'Geolocation': `37.42;-122.08`,
   'api-version': `${api_version}`,
   'x-api-key': `${api_key}`,
   'Authorization': `${Authorization}`,
   'client': `${client}`,
   'territory': `${territory}`,
-  
-}
+  'device-datetime': `${FullDate}`, }
 
 class Cinemas extends Component {
   constructor(props){
@@ -40,16 +40,12 @@ class Cinemas extends Component {
 }
 
 componentDidMount () { 
+console.log(this.props.geo);
+console.log(FullDate);
+
   return fetch(`${endpoint}${baseUrl}`, {
     method: 'GET',
-    headers: JSON.stringify({'api-version': `${api_version}`,
-    'x-api-key': `${api_key}`,
-    'Authorization': `${Authorization}`,
-    'client': `${client}`,
-    'territory': `${territory}`,
-    'device-datetime': `${FullDate}`,
-    'Geolocation': `${this.props.geo}`}) 
-  })
+    headers: headers })
       .then ((response) => response.json())
       .then ((responseJson) => {
           this.setState({  //If data return set these states
@@ -77,8 +73,8 @@ componentDidMount () {
     return (
         <View style={styles.container}>
         <ImageBackground source={require('../screens/res/theatre.jpg')} style={{width: deviceWidth, height: '110%'}}>
-        <Text style={{color: 'white'}}>Latitude: {this.props.Id}</Text>
-        <Text style={{color: 'white'}}>Longitude: {this.props.geo}</Text>
+        <Text style={{color: 'white', marginTop: '30%'}}>Latitude: {this.props.Id}</Text>
+        <Text style={{color: 'white',  marginTop: '30%'}}>Longitude: {this.props.geo}</Text>
         </ImageBackground>
       </View>
     );
