@@ -107,7 +107,21 @@ const FullCast = arrCast.map((cast) => <Text>{cast}</Text>);
             </View>
         )
     } 
+
+    function NumberList(props) {
+      const cast = props.arrCast;
+      const listItems = arrCast.map((cast) =>
+        <li key={cast.toString()}>
+          {cast}
+        </li>
+      );
+      return (
+        <ul>{listItems}</ul>
+      );
+    }
+
 var FilmId = `${movies.film_id}`
+
     return (
       <View style={styles.container}>
       <Video source={{uri: `${movies.trailers.high[0].film_trailer}`}}   // Can be a URL or a local file.
@@ -133,7 +147,7 @@ var FilmId = `${movies.film_id}`
            <Text style={styles.Text}>Duration:  {movies.duration_mins}mins</Text>
            <Text style={styles.Text}>Genre:  {movies.genres[0].genre_name}</Text>
            <Text style={styles.Title}>Cast</Text>
-           <Text style={styles.Text}>{FullCast}</Text>
+           <NumberList cast={arrCast} />
           
        </View>
        <View style={styles.Button}>
