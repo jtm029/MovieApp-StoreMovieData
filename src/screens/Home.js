@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, ScrollView, View, ActivityIndicator, StatusBar} from 'react-native';
 import Category from '../Components/Category'
 
-const api_key = 'LHEEjsU7WC74YChhCWpzt9qQ2PE4goA05dDZsmQ5';
+const api_key = '49AsdRz3X19fXjsiuQXJI6aahdkOxUwB8BxLC3OT';
 const endpoint = 'https://api-gate2.movieglu.com/';
 const baseUrl = 'filmsNowShowing/?n=15';
-const Authorization = 'Basic UEVSU18zMDo4eEV0VURtT0VHYlI=';
+const Authorization = 'Basic UEVSU18zNDpxOG5QSzd0eWRnY2Y=';
 const api_version = 'v200';
-const client = 'PERS_30';
+const client = 'PERS_34';
 const territory = 'US';
 
 var date = new Date().getDate(); //Current Date

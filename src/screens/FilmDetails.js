@@ -4,12 +4,13 @@ import Video from 'react-native-video';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Actions } from 'react-native-router-flux';
 
-const api_key = 'LHEEjsU7WC74YChhCWpzt9qQ2PE4goA05dDZsmQ5';
+
+const api_key = '49AsdRz3X19fXjsiuQXJI6aahdkOxUwB8BxLC3OT';
 const endpoint = 'https://api-gate2.movieglu.com/';
 const baseUrl = 'filmDetails/?film_id=';
-const Authorization = 'Basic UEVSU18zMDo4eEV0VURtT0VHYlI=';
+const Authorization = 'Basic UEVSU18zNDpxOG5QSzd0eWRnY2Y=';
 const api_version = 'v200';
-const client = 'PERS_30';
+const client = 'PERS_34';
 const territory = 'US';
 const deviceWidth = Dimensions.get('window').width;
 
@@ -89,9 +90,8 @@ for(i = 0; i < sizeCast; i++){
   arrCast[i] = movies.cast[i].cast_name;
 }
 
-const textInputComponents = arrCast.map((type)=> <TextInput placeholder={type} />);
+const FullCast = arrCast.map((cast) => <Text>{cast}</Text>);
 
-  console.log(arrCast);
   if(sizeStill === 0){
     var link = poster;
   }
@@ -100,7 +100,6 @@ const textInputComponents = arrCast.map((type)=> <TextInput placeholder={type} /
 
     console.log(movies);
 
-//console.log(link);
     if(this.state.isLoading){ //Load activity if api fails to return
         return (
             <View style={styles.container}>
@@ -134,9 +133,8 @@ var FilmId = `${movies.film_id}`
            <Text style={styles.Text}>Duration:  {movies.duration_mins}mins</Text>
            <Text style={styles.Text}>Genre:  {movies.genres[0].genre_name}</Text>
            <Text style={styles.Title}>Cast</Text>
-           <Text style={styles.Text}>• {textInputComponents}</Text>
-          <Text style={styles.Text}>• {movies.cast[1].cast_name}</Text>
-           <Text style={styles.Text}>• {movies.cast[2].cast_name}</Text>
+           <Text style={styles.Text}>{FullCast}</Text>
+          
        </View>
        <View style={styles.Button}>
        <Button title="Find Your Cinema" style={styles.Button} color='#5b000f' onPress={() => getCinemas(FilmId, this.props.Loc)}/>

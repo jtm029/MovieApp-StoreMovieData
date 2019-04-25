@@ -10,9 +10,9 @@ $api = 'filmsNowShowing/?n=10';
 ####################
 // You can find the details below in the email you received when you registered for a MovieGlu evaluation account.
 $api_endpoint = 'https://api-gate2.movieglu.com/';
-$username = 'PERS_30'; // Example: $username = 'ABCD';
-$api_key = 'LHEEjsU7WC74YChhCWpzt9qQ2PE4goA05dDZsmQ5';  //Example: $api_key = 'AbCdEFG7CuTTc6KX76mI5aAoGtqbrGW2ga6B4jRg';
-$basic_authorization = 'Basic UEVSU18zMDo4eEV0VURtT0VHYlI='; // Example: $basic_authorization = 'Basic UHSYGF4xNTpNOHdJQllxckYyN3y=';
+$username = 'PERS_34'; // Example: $username = 'ABCD';
+$api_key = '49AsdRz3X19fXjsiuQXJI6aahdkOxUwB8BxLC3OT';  //Example: $api_key = 'AbCdEFG7CuTTc6KX76mI5aAoGtqbrGW2ga6B4jRg';
+$basic_authorization = 'Basic UEVSU18zNDpxOG5QSzd0eWRnY2Y='; // Example: $basic_authorization = 'Basic UHSYGF4xNTpNOHdJQllxckYyN3y=';
 $territory = 'US'; // Territory chosen as part of your evaluation key request  (Options: UK, FR, ES, DE, US, CA, IE, IN)
 $api_version = 'v200'; // API Version for evaluation - check documentation for later versions
 $device_datetime = (new DateTime())->format('Y-m-d H:i:s'); // Current device date/time 
