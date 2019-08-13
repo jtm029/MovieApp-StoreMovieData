@@ -86,11 +86,9 @@ render() {
 var sizeStill = Object.size(still);
 var sizeCast = Object.size(cast);
 
-for(i = 0; i < sizeCast; i++){
+for(i = 0; (i < sizeCast && i < 3); i++){
   arrCast[i] = movies.cast[i].cast_name;
 }
-
-const FullCast = arrCast.map((cast) => <Text>{cast}</Text>);
 
   if(sizeStill === 0){
     var link = poster;
@@ -108,15 +106,14 @@ const FullCast = arrCast.map((cast) => <Text>{cast}</Text>);
         )
     } 
 
-    function NumberList(props) {
-      const cast = props.arrCast;
+    function NumberList() {
       const listItems = arrCast.map((cast) =>
-        <li key={cast.toString()}>
-          {cast}
-        </li>
+        <Text key={cast.toString()} style={styles.Text2}>
+         • {cast}{"\n"}{"\n"}
+        </Text>
       );
       return (
-        <ul>{listItems}</ul>
+        <Text>{listItems}</Text>
       );
     }
 
@@ -171,7 +168,7 @@ const styles = StyleSheet.create({
   },
   Button: {
     position: 'absolute',
-    bottom: 12,
+    bottom: '1.5%',
     width: deviceWidth,      
   },
   Text: {
@@ -204,7 +201,7 @@ const styles = StyleSheet.create({
   },
   backgroundVideo: {
     position: 'absolute',
-    marginTop: '-110%',
+    marginTop: '-115%',
     top: 0,
     left: 0,
     bottom: 0,

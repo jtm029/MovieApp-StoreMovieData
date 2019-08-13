@@ -54,6 +54,7 @@ componentDidMount () {
 
    
 
+
 render() {
   const { movies } = this.state;
   var films = ((movies || {}).films || {});
@@ -61,12 +62,15 @@ render() {
   var posters = [];
   var numItems = status.count;
 
+console.log(films);
+
   for(i = 0; i < numItems; i++){
+    if(!(films[i].images.poster[1])){
+      posters.push(films[i].images.still[1].medium.film_image);
+    }
+    else
         posters.push(films[i].images.poster[1].medium.film_image);
   }
-
-console.log(films);
-console.log(movies);
 
     if(this.state.isLoading){ //Load activity if api fails to return
         return (
@@ -75,6 +79,7 @@ console.log(movies);
             </View>
         )
     } 
+    console.log(posters);
 
     return (
       <View style={styles.container}>

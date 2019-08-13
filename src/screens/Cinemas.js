@@ -88,7 +88,7 @@ export default Cinemas;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '10%',
+    marginTop: '8%',
     flexDirection: 'column',
     backgroundColor: '#5b000f',
     alignItems: 'center',
@@ -101,37 +101,43 @@ const styles = StyleSheet.create({
     paddingLeft: '0%',
     fontWeight: 'bold',
     paddingTop : '1%',
-    textAlign: 'left',
+    textAlign: 'center',
     //justifyContent: 'center',
     color: 'white',
   },
   movie: {
     width: deviceWidth,
     height: '20%',
-    backgroundColor: 'blue',
-    borderWidth: 1.0,
+    //backgroundColor: 'blue',
+    borderWidth: 0.5,
     borderColor: 'white',
  },
  movie2: {
   width: deviceWidth,
   height: '20%',
   //backgroundColor: 'red',
-  borderWidth: 1.5,
-    borderColor: 'white',
+  borderWidth: 0.5,
+  borderColor: 'white',
 },
 movie3: {
   width: deviceWidth,
   height: '20%',
-  backgroundColor: 'green'
+  borderWidth: 0.5,
+  borderColor: 'white',
+ // backgroundColor: 'green'
 },
 movie4: {
   width: deviceWidth,
   height: '20%',
-  backgroundColor: 'grey'
+  borderWidth: 0.5,
+  borderColor: 'white',
+ // backgroundColor: 'grey'
 },
 movie5: {
   width: deviceWidth,
   height: '20%',
-  backgroundColor: 'black'
+  borderWidth: 0.5,
+  borderColor: 'white',
+  //backgroundColor: 'black'
 },
 });
